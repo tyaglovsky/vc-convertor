@@ -76,6 +76,14 @@ function parseVCard(vcardText: string): Contact {
 
     if (!value) continue;
 
+    // Only process specific fields: phone numbers, emails, addresses, URLs, and notes
+    const [fieldType] = fieldPart.split(';');
+    
+    // Skip fields we don't want
+    if (!['TEL', 'EMAIL', 'ADR', 'URL', 'NOTE', 'FN', 'N'].includes(fieldType)) {
+      continue;
+    }
+
     // Handle name specially
     if (fieldPart === 'FN') {
       const [firstName, lastName] = parseName(value);
@@ -108,7 +116,7 @@ function parseVCard(vcardText: string): Contact {
       continue;
     }
 
-    // Handle all other fields
+    // Handle phone numbers, emails, URLs, and notes
     const normalizedField = normalizeFieldName(fieldPart);
     
     if (!fieldCounts[normalizedField]) fieldCounts[normalizedField] = 0;
