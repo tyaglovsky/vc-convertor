@@ -179,57 +179,79 @@ const VCFConverter = () => {
               href="https://tyaglovsky.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors group"
               aria-label="Website"
             >
-              <Globe className="w-5 h-5" />
+              <svg className="w-5 h-5 text-converter-text group-hover:text-converter-text-muted transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="m2 12c0-2.3 2.3-4.5 6-6l8 12c-3.7 1.5-6-.7-6-3"/>
+                <path d="m22 12c0 2.3-2.3 4.5-6 6l-8-12c3.7-1.5 6 .7 6 3"/>
+              </svg>
             </a>
             <a 
               href="https://www.linkedin.com/in/tyaglovsky/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors group"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-5 h-5" />
+              <svg className="w-5 h-5 text-converter-text group-hover:text-converter-text-muted transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
             </a>
             <a 
               href="https://www.instagram.com/tyaglovsky/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors group"
               aria-label="Instagram"
             >
-              <Instagram className="w-5 h-5" />
+              <svg className="w-5 h-5 text-converter-text group-hover:text-converter-text-muted transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
             </a>
             <a 
               href="https://www.threads.com/@tyaglovsky" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors group"
               aria-label="Threads"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.5 12.5c0-3.086.85-5.94 2.495-8.491C5.852 1.205 8.605.024 12.186 0h.007c3.581.024 6.334 1.205 8.184 3.509C21.65 5.56 22.5 8.414 22.5 11.5c0 3.086-.85 5.94-2.495 8.491C18.148 22.795 15.395 23.976 12.186 24zm.017-20.806c-2.02 0-3.66 1.648-3.66 3.68v.55c0 .658.533 1.191 1.191 1.191s1.191-.533 1.191-1.191v-.55c0-.688.56-1.247 1.278-1.247s1.278.559 1.278 1.247v6.124c0 1.372 1.113 2.485 2.485 2.485s2.485-1.113 2.485-2.485c0-.688-.56-1.247-1.278-1.247s-1.278.559-1.278 1.247c0 .031-.025.056-.056.056s-.056-.025-.056-.056V7.424c0-2.032-1.64-3.68-3.66-3.68z"/>
+              <svg className="w-5 h-5 text-converter-text group-hover:text-converter-text-muted transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
+                <path d="M8.5 12.5c0-2 1.5-3.5 3.5-3.5s3.5 1.5 3.5 3.5"/>
+                <path d="M12 9v6"/>
+                <circle cx="12" cy="15.5" r="1.5"/>
               </svg>
             </a>
             <a 
               href="https://github.com/tyaglovsky" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors group"
               aria-label="GitHub"
             >
-              <Github className="w-5 h-5" />
+              <svg className="w-5 h-5 text-converter-text group-hover:text-converter-text-muted transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
             </a>
             <a 
               href="https://apps.apple.com/us/app/vcf-csv-converter/id6743118383" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors group"
               aria-label="App Store"
             >
-              <Smartphone className="w-5 h-5" />
+              <svg className="w-5 h-5 text-converter-text group-hover:text-converter-text-muted transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
             </a>
           </div>
           
