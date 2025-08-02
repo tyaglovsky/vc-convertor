@@ -1,73 +1,66 @@
-# Welcome to your Lovable project
+# 📇 VCF to CSV Converter
 
-## Project info
+A simple and secure web app for converting `.vcf` (vCard) contact files into `.csv` format – entirely in your browser, with no data ever sent to a server.
 
-**URL**: https://lovable.dev/projects/b1b74767-0e1f-4188-bf1d-aa6aab062f8e
+**Live demo**: [vcc.tyaglovsky.com](https://vcc.tyaglovsky.com)
 
-## How can I edit this code?
+![preview](https://tyaglovsky.com/lovable-uploads/webvcc.png))
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 📱 Also Available on the App Store
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b1b74767-0e1f-4188-bf1d-aa6aab062f8e) and start prompting.
+If you prefer using a native app, the same converter is available for iPhone, iPad, and Mac:
 
-Changes made via Lovable will be committed automatically to this repo.
+[![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/vcf-csv-converter/id6743118383)
 
-**Use your preferred IDE**
+> 🧑‍💻 Built entirely in Xcode + Swift.  
+> Perfect for offline use, privacy-focused, and optimized for Apple devices.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## ✨ Features
 
-Follow these steps:
+- ✅ 100% local conversion – no server, no tracking
+- ✅ Supports multiple contacts in one `.vcf` file
+- ✅ Works offline after first load (PWA-ready)
+- ✅ No installation required
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🚀 Usage
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Open the web app: [vcc.tyaglovsky.com](https://vcc.tyaglovsky.com)
+2. Upload your `.vcf` file (exported from iPhone, Android, etc.)
+3. Click **Convert**
+4. Download the `.csv` with your contacts
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## 🛠 Tech Stack
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [shadcn/ui](https://ui.shadcn.com/)
 - TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- TailwindCSS
+- Deployed via **Cloudflare Pages**
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/b1b74767-0e1f-4188-bf1d-aa6aab062f8e) and click on Share -> Publish.
+## 🛡 Privacy
 
-## Can I connect a custom domain to my Lovable project?
+This app runs entirely in your browser.  
+No data is sent, stored, or tracked in any way.
 
-Yes, you can!
+> Hosting is provided by [Cloudflare Pages](https://pages.cloudflare.com/), which may log IP addresses and traffic data for operational purposes only. This information is not used or accessed by the developer.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📦 Local Development
+
+```bash
+git clone https://github.com/tyaglovsky/vc-convertor.git
+cd vc-convertor
+npm install
+npm run dev
