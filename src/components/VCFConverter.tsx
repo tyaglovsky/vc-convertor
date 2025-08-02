@@ -90,7 +90,7 @@ const VCFConverter = () => {
   };
 
   return (
-    <div className="min-h-screen liquid-glass flex items-center justify-center p-4">
+    <div className="min-h-screen converter-gradient flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
