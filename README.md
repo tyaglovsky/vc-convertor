@@ -4,7 +4,7 @@ A simple and secure web app for converting `.vcf` (vCard) contact files into `.c
 
 **Live demo**: [vcc.tyaglovsky.com](https://vcc.tyaglovsky.com)
 
-![preview](https://tyaglovsky.com/lovable-uploads/webvcc.png))
+![preview](https://tyaglovsky.com/lovable-uploads/webvcc.png)
 
 ---
 
