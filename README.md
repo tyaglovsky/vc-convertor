@@ -46,6 +46,10 @@ If you prefer using a native app, the same converter is available for iPhone, iP
 - TailwindCSS
 - Deployed via **Cloudflare Pages**
 
+## 🧡 Credits
+
+UI/UX design was beautifully bootstrapped with help from [Lovable.dev](https://lovable.dev) – an AI-powered UI builder that helped shape the visual part of this app.
+
 ---
 
 ## 🛡 Privacy
