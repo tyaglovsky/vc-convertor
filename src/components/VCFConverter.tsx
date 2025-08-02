@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { parseVCF, convertToCSV, downloadCSV, Contact } from '@/lib/vcf-converter';
-import { Upload, Download, FileText, Mail, Linkedin, Instagram, Github, Smartphone } from 'lucide-react';
+import { Upload, Download, FileText, Mail, Linkedin, Instagram, Github, Smartphone, Globe } from 'lucide-react';
 
 const VCFConverter = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -173,12 +173,22 @@ const VCFConverter = () => {
             </a>
           </div>
           
-          <div className="flex justify-center items-center gap-4 mb-4">
+          
+          <div className="flex justify-center items-center gap-3 mb-4">
+            <a 
+              href="https://tyaglovsky.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              aria-label="Website"
+            >
+              <Globe className="w-5 h-5" />
+            </a>
             <a 
               href="https://www.linkedin.com/in/tyaglovsky/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-converter-text hover:text-converter-text-muted transition-colors"
+              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
@@ -187,7 +197,7 @@ const VCFConverter = () => {
               href="https://www.instagram.com/tyaglovsky/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-converter-text hover:text-converter-text-muted transition-colors"
+              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5" />
@@ -196,7 +206,7 @@ const VCFConverter = () => {
               href="https://www.threads.com/@tyaglovsky" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-converter-text hover:text-converter-text-muted transition-colors"
+              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
               aria-label="Threads"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -207,7 +217,7 @@ const VCFConverter = () => {
               href="https://github.com/tyaglovsky" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-converter-text hover:text-converter-text-muted transition-colors"
+              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -216,7 +226,7 @@ const VCFConverter = () => {
               href="https://apps.apple.com/us/app/vcf-csv-converter/id6743118383" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-converter-text hover:text-converter-text-muted transition-colors"
+              className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
               aria-label="App Store"
             >
               <Smartphone className="w-5 h-5" />
