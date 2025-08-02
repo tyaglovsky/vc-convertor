@@ -216,20 +216,6 @@ const VCFConverter = () => {
               </svg>
             </a>
             <a 
-              href="https://www.threads.com/@tyaglovsky" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors group"
-              aria-label="Threads"
-            >
-              <svg className="w-5 h-5 text-converter-text group-hover:text-converter-text-muted transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
-                <path d="M8.5 12.5c0-2 1.5-3.5 3.5-3.5s3.5 1.5 3.5 3.5"/>
-                <path d="M12 9v6"/>
-                <circle cx="12" cy="15.5" r="1.5"/>
-              </svg>
-            </a>
-            <a 
               href="https://github.com/tyaglovsky" 
               target="_blank" 
               rel="noopener noreferrer"
