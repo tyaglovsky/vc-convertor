@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { parseVCF, convertToCSV, downloadCSV, shareCSV, Contact } from '@/lib/vcf-converter';
-import { Upload, Download, Share2, FileText } from 'lucide-react';
+import { parseVCF, convertToCSV, downloadCSV, Contact } from '@/lib/vcf-converter';
+import { Upload, Download, FileText } from 'lucide-react';
 
 const VCFConverter = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -71,26 +71,6 @@ const VCFConverter = () => {
     }
   };
 
-  const handleShare = async () => {
-    if (!csvContent) {
-      toast({
-        title: "No CSV data",
-        description: "Please convert a VCF file first",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    try {
-      await shareCSV(csvContent, `${selectedFile?.name.replace('.vcf', '')}_contacts.csv`);
-    } catch (error) {
-      toast({
-        title: "Share failed",
-        description: "Unable to share the file",
-        variant: "destructive"
-      });
-    }
-  };
 
   const handleSave = () => {
     if (!csvContent) {
@@ -148,17 +128,6 @@ const VCFConverter = () => {
             {isProcessing ? 'Converting...' : 'Convert to CSV'}
           </Button>
 
-          {/* Share Button */}
-          <Button
-            onClick={handleShare}
-            variant="converter"
-            size="xl"
-            className="w-full"
-            disabled={!csvContent || isProcessing}
-          >
-            <Share2 className="w-5 h-5" />
-            Share CSV
-          </Button>
 
           {/* Save Button */}
           <Button
