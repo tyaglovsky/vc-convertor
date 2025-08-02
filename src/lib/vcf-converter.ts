@@ -1,5 +1,13 @@
 export interface Contact {
-  [key: string]: string;
+  firstName: string;
+  lastName: string;
+  phone1: string;
+  phone2: string;
+  phone3: string;
+  email1: string;
+  email2: string;
+  email3: string;
+  addresses: string;
 }
 
 function parseName(fullName: string): [string, string] {
@@ -9,120 +17,52 @@ function parseName(fullName: string): [string, string] {
   return [firstName, lastName];
 }
 
-function normalizeFieldName(vcfField: string): string {
-  // Extract field type and parameters
-  const [fieldType, ...params] = vcfField.split(';');
-  
-  // Map VCF field names to human-readable names
-  const fieldMapping: { [key: string]: string } = {
-    'FN': 'Full Name',
-    'N': 'Name',
-    'ORG': 'Organization',
-    'TITLE': 'Title',
-    'ROLE': 'Role',
-    'BDAY': 'Birthday',
-    'URL': 'Website',
-    'NOTE': 'Notes',
-    'NICKNAME': 'Nickname',
-    'CATEGORIES': 'Categories'
-  };
-
-  let baseName = fieldMapping[fieldType] || fieldType;
-
-  // Handle phone and email types with parameters
-  if (fieldType === 'TEL') {
-    baseName = 'Phone';
-    const typeParam = params.find(p => p.startsWith('TYPE='));
-    if (typeParam) {
-      const type = typeParam.split('=')[1];
-      baseName += ` ${type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}`;
-    }
-  } else if (fieldType === 'EMAIL') {
-    baseName = 'Email';
-    const typeParam = params.find(p => p.startsWith('TYPE='));
-    if (typeParam) {
-      const type = typeParam.split('=')[1];
-      baseName += ` ${type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}`;
-    }
-  } else if (fieldType === 'ADR') {
-    baseName = 'Address';
-    const typeParam = params.find(p => p.startsWith('TYPE='));
-    if (typeParam) {
-      const type = typeParam.split('=')[1];
-      baseName += ` ${type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}`;
-    }
-  }
-
-  return baseName;
-}
-
 function parseVCard(vcardText: string): Contact {
   const lines = vcardText.split(/\r\n|\r|\n/);
-  const contact: Contact = {};
-  const fieldCounts: { [key: string]: number } = {};
+  let fullName = '';
+  const phoneNumbers: string[] = [];
+  const emails: string[] = [];
+  const addresses: string[] = [];
 
   for (const line of lines) {
     const trimmedLine = line.trim();
     
-    if (!trimmedLine || trimmedLine === 'BEGIN:VCARD' || trimmedLine === 'END:VCARD' || trimmedLine.startsWith('VERSION:')) {
-      continue;
-    }
-
-    const colonIndex = trimmedLine.indexOf(':');
-    if (colonIndex === -1) continue;
-
-    const fieldPart = trimmedLine.substring(0, colonIndex);
-    const value = trimmedLine.substring(colonIndex + 1).trim();
-
-    if (!value) continue;
-
-    // Handle name specially
-    if (fieldPart === 'FN') {
-      const [firstName, lastName] = parseName(value);
-      contact['First Name'] = firstName;
-      contact['Last Name'] = lastName;
-      continue;
-    }
-
-    // Handle structured name (N field)
-    if (fieldPart === 'N') {
-      const nameParts = value.split(';');
-      if (nameParts[1] && !contact['First Name']) contact['First Name'] = nameParts[1];
-      if (nameParts[0] && !contact['Last Name']) contact['Last Name'] = nameParts[0];
-      continue;
-    }
-
-    // Handle addresses specially
-    if (fieldPart.startsWith('ADR')) {
-      const addrParts = value.split(';').filter(part => part.trim());
-      if (addrParts.length > 0) {
-        const normalizedField = normalizeFieldName(fieldPart);
-        const fieldKey = normalizedField;
-        
-        if (!fieldCounts[fieldKey]) fieldCounts[fieldKey] = 0;
-        fieldCounts[fieldKey]++;
-        
-        const finalFieldName = fieldCounts[fieldKey] > 1 ? `${fieldKey} ${fieldCounts[fieldKey]}` : fieldKey;
-        contact[finalFieldName] = addrParts.join(', ');
+    if (trimmedLine.startsWith('FN:')) {
+      fullName = trimmedLine.substring(3);
+    } else if (trimmedLine.startsWith('TEL:') || trimmedLine.includes('TEL;')) {
+      const phoneMatch = trimmedLine.match(/TEL[^:]*:(.+)/);
+      if (phoneMatch) {
+        phoneNumbers.push(phoneMatch[1].trim());
       }
-      continue;
+    } else if (trimmedLine.startsWith('EMAIL:') || trimmedLine.includes('EMAIL;')) {
+      const emailMatch = trimmedLine.match(/EMAIL[^:]*:(.+)/);
+      if (emailMatch) {
+        emails.push(emailMatch[1].trim());
+      }
+    } else if (trimmedLine.startsWith('ADR:') || trimmedLine.includes('ADR;')) {
+      const adrMatch = trimmedLine.match(/ADR[^:]*:(.+)/);
+      if (adrMatch) {
+        const addrParts = adrMatch[1].split(';').filter(part => part.trim());
+        if (addrParts.length > 0) {
+          addresses.push(addrParts.join(', '));
+        }
+      }
     }
-
-    // Handle all other fields
-    const normalizedField = normalizeFieldName(fieldPart);
-    
-    if (!fieldCounts[normalizedField]) fieldCounts[normalizedField] = 0;
-    fieldCounts[normalizedField]++;
-    
-    const finalFieldName = fieldCounts[normalizedField] > 1 ? `${normalizedField} ${fieldCounts[normalizedField]}` : normalizedField;
-    contact[finalFieldName] = value;
   }
 
-  // Ensure First Name and Last Name exist
-  if (!contact['First Name']) contact['First Name'] = '';
-  if (!contact['Last Name']) contact['Last Name'] = '';
+  const [firstName, lastName] = parseName(fullName);
 
-  return contact;
+  return {
+    firstName,
+    lastName,
+    phone1: phoneNumbers[0] || '',
+    phone2: phoneNumbers[1] || '',
+    phone3: phoneNumbers[2] || '',
+    email1: emails[0] || '',
+    email2: emails[1] || '',
+    email3: emails[2] || '',
+    addresses: addresses.join(', ')
+  };
 }
 
 export function parseVCF(vcfContent: string): Contact[] {
@@ -139,31 +79,32 @@ export function parseVCF(vcfContent: string): Contact[] {
 }
 
 export function convertToCSV(contacts: Contact[]): string {
-  // Collect all unique field names across all contacts
-  const allFields = new Set<string>();
-  
-  for (const contact of contacts) {
-    Object.keys(contact).forEach(field => allFields.add(field));
-  }
-  
-  // Sort fields with First Name and Last Name first, then alphabetically
-  const sortedFields = Array.from(allFields).sort((a, b) => {
-    if (a === 'First Name') return -1;
-    if (b === 'First Name') return 1;
-    if (a === 'Last Name') return -1;
-    if (b === 'Last Name') return 1;
-    return a.localeCompare(b);
-  });
+  const headers = [
+    'First Name',
+    'Last Name', 
+    'Phone 1',
+    'Phone 2',
+    'Phone 3',
+    'Email 1',
+    'Email 2',
+    'Email 3',
+    'Addresses'
+  ];
 
-  const csvLines = [sortedFields.join(',')];
+  const csvLines = [headers.join(',')];
 
   for (const contact of contacts) {
-    const row = sortedFields.map(field => {
-      const value = contact[field] || '';
-      // Escape quotes and wrap in quotes for CSV format
-      const escapedValue = value.replace(/"/g, '""');
-      return `"${escapedValue}"`;
-    });
+    const row = [
+      `"${contact.firstName}"`,
+      `"${contact.lastName}"`,
+      `"${contact.phone1}"`,
+      `"${contact.phone2}"`,
+      `"${contact.phone3}"`,
+      `"${contact.email1}"`,
+      `"${contact.email2}"`,
+      `"${contact.email3}"`,
+      `"${contact.addresses}"`
+    ];
     csvLines.push(row.join(','));
   }
 
