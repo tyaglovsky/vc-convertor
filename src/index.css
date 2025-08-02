@@ -39,9 +39,9 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     /* VCF Converter Theme */
-    --gradient-start: 210 100% 85%;
-    --gradient-middle: 260 100% 80%;
-    --gradient-end: 15 100% 70%;
+    --gradient-start: 45 100% 96%;
+    --gradient-middle: 15 80% 85%;
+    --gradient-end: 355 85% 80%;
     --converter-primary: 0 0% 15%;
     --converter-primary-foreground: 0 0% 98%;
     --converter-surface: 0 0% 100%;
@@ -104,9 +104,9 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     /* Dark mode adjustments for VCF Converter */
-    --gradient-start: 210 100% 25%;
-    --gradient-middle: 260 100% 30%;
-    --gradient-end: 15 100% 35%;
+    --gradient-start: 45 60% 15%;
+    --gradient-middle: 15 50% 20%;
+    --gradient-end: 355 45% 25%;
     --converter-surface-alpha: 0 0% 0%;
   }
 }
