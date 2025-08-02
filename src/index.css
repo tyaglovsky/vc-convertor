@@ -38,6 +38,17 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* VCF Converter Theme */
+    --gradient-start: 210 100% 85%;
+    --gradient-middle: 260 100% 80%;
+    --gradient-end: 15 100% 70%;
+    --converter-primary: 0 0% 15%;
+    --converter-primary-foreground: 0 0% 98%;
+    --converter-surface: 0 0% 100%;
+    --converter-surface-alpha: 0 0% 100%;
+    --converter-text: 0 0% 20%;
+    --converter-text-muted: 0 0% 40%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -91,6 +102,31 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark mode adjustments for VCF Converter */
+    --gradient-start: 210 100% 25%;
+    --gradient-middle: 260 100% 30%;
+    --gradient-end: 15 100% 35%;
+    --converter-surface-alpha: 0 0% 0%;
+  }
+}
+
+/* Converter specific styles */
+.converter-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--gradient-start)) 0%, 
+    hsl(var(--gradient-middle)) 50%, 
+    hsl(var(--gradient-end)) 100%);
+  animation: gradient-shift 8s ease-in-out infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 

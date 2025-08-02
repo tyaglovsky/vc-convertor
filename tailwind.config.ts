@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				converter: {
+					primary: 'hsl(var(--converter-primary))',
+					'primary-foreground': 'hsl(var(--converter-primary-foreground))',
+					surface: 'hsl(var(--converter-surface))',
+					'surface-alpha': 'hsl(var(--converter-surface-alpha))',
+					text: 'hsl(var(--converter-text))',
+					'text-muted': 'hsl(var(--converter-text-muted))',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
