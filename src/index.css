@@ -112,21 +112,73 @@ All colors MUST be HSL.
 }
 
 /* Converter specific styles */
-.converter-gradient {
+.liquid-glass {
+  position: relative;
   background: linear-gradient(135deg, 
     hsl(var(--gradient-start)) 0%, 
     hsl(var(--gradient-middle)) 50%, 
     hsl(var(--gradient-end)) 100%);
-  animation: gradient-shift 8s ease-in-out infinite;
-  background-size: 400% 400%;
+  overflow: hidden;
 }
 
-@keyframes gradient-shift {
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.2) 0%, 
+    rgba(255, 255, 255, 0.1) 25%, 
+    transparent 50%),
+  radial-gradient(circle, 
+    rgba(255, 255, 255, 0.15) 0%, 
+    transparent 40%);
+  background-size: 300px 300px, 200px 200px;
+  animation: liquid-flow 20s ease-in-out infinite;
+}
+
+.liquid-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(255, 255, 255, 0.08) 50%, 
+    transparent 70%);
+  background-size: 400px 400px;
+  animation: glass-shine 15s ease-in-out infinite;
+}
+
+@keyframes liquid-flow {
   0%, 100% {
-    background-position: 0% 50%;
+    transform: translate(-25%, -25%) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translate(-15%, -35%) rotate(90deg);
+    opacity: 0.6;
   }
   50% {
-    background-position: 100% 50%;
+    transform: translate(-35%, -15%) rotate(180deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(-20%, -30%) rotate(270deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glass-shine {
+  0%, 100% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+  50% {
+    transform: translateX(100%) translateY(100%);
   }
 }
 
